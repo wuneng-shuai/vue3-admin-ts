@@ -11,13 +11,16 @@
     "prettier": "prettier **/* --write"
   },
   "dependencies": {
+    "axios": "^0.26.1",
     "element-plus": "^2.1.10",
+    "mockjs": "^1.1.0",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@iceworks/spec": "^1.0.0",
+    "@types/mockjs": "^1.0.6",
     "@typescript-eslint/parser": "^5.4.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",

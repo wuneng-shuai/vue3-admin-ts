@@ -1,10 +1,11 @@
-import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import login from '@/views/login/loginViews.vue'
-import layout from '@/views/layout/layoutViews.vue'
-const routes: Array<RouteRecordRaw> = [
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import login from '@/views/login/loginViews.vue';
+import layout from '@/views/layout/layoutViews.vue';
+
+const routes: RouteRecordRaw[] = [
   {
     path: '/login',
-    component: login
+    component: login,
   },
   {
     path: '/',
@@ -13,16 +14,16 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '/layout',
-        component: layout
-      }
-    ]
-  }
+        component: layout,
+      },
+    ],
+  },
 
-]
+];
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

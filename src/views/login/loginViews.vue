@@ -18,51 +18,56 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
-import type { FormInstance } from 'element-plus'
-import { useRouter } from 'vue-router'
-const router = useRouter()
-const ruleFormRef = ref<FormInstance>()
+import { reactive, ref } from 'vue';
+import type { FormInstance } from 'element-plus';
+import { useRouter } from 'vue-router';
+import { getList } from '@/api/getData';
+
+const router = useRouter();
+const ruleFormRef = ref<FormInstance>();
 const validatePhone = (rule: any, value: any, callback: any) => {
   if (!value) {
-    callback(new Error('请输入账号'))
+    callback(new Error('请输入账号'));
   }
-  callback()
-}
+  callback();
+};
 const validatePassword = (rule: any, value: any, callback: any) => {
   if (!value) {
-    callback(new Error('请输入登陆密码'))
+    callback(new Error('请输入登陆密码'));
   } else {
-    callback()
+    callback();
   }
-}
+};
 
 const ruleForm = reactive({
   phone: '',
-  password: ''
-})
+  password: '',
+});
 
 const rules = reactive({
   phone: [{ validator: validatePhone, trigger: 'blur' }],
-  password: [{ validator: validatePassword, trigger: 'blur' }]
-})
+  password: [{ validator: validatePassword, trigger: 'blur' }],
+});
 
 const submitForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
+  if (!formEl) return;
   formEl.validate((valid) => {
     if (valid) {
-      router.push('/layout')
+      const res = getList();
+      console.log(res);
+
+      // router.push('/layout')
     } else {
-      console.log('error submit!')
-      return false
+      console.log('error submit!');
+      return false;
     }
-  })
-}
+  });
+};
 
 const resetForm = (formEl: FormInstance | undefined) => {
-  if (!formEl) return
-  formEl.resetFields()
-}
+  if (!formEl) return;
+  formEl.resetFields();
+};
 </script>
 
 <style lang="scss">
